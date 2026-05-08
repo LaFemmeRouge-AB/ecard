@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url(https://images.alphacoders.com/113/thumb-1920-1138740.png); background-size: auto; background-repeat: no-repeat; background-attachment: fixed; overflow-y: hidden; overflow-x: hidden;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.images {
+    mix-blend-mode: multiply;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease-in-out;
+    transform: translateX(40px);
+}
+
+.slide.active {
+    opacity: .9;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.graffitihead {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: aliceblue;
+    filter: blur(), contrast(50%), brightness;
+    animation: sprayIn 2.8s forwards;
+    text-shadow: 
+        3px 3px 0 #000,
+        -2px -2px 0 #000
+        2px -2px 0 #000,
+        -2px 2px 0 #000  
+}
+
+.graffiti {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: aliceblue;
+    filter: blur(), contrast(50%), brightness;
+    animation: sprayIn 2.8s forwards;
+    text-shadow: 
+        3px 3px 0 #000,
+        -2px -2px 0 #000
+        2px -2px 0 #000,
+        -2px 2px 0 #000
+}
+
+.graffitihead:nth-child(2) {
+    animation-delay: 0.6s;
+    font-size: 2.2rem;
+}
+
+.graffiti:nth-child(2) {
+    animation-delay: 0.6s;
+    font-size: 2.2rem;
+}
+
+@keyframes sprayIn {
+    0% {
+        opacity: 0;
+        filter: blur(12px) brightness(0.6);
+        transform: scale(0.85) translateY(20px);
+    }
+    40% { 
+        filter: blur(4px) brightness(1.2);
+    }
+    70% {
+        filter: blur(1px);
+    }
+    80% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0) brightness(1);
+        transform: scale(1) translateY(0);
+    }
+}
+
+.arrow {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.arrow:hover { transform: scale(1.15); }
+
+#forward {
+    left: 53%;
+    filter: invert();
+    transform: scaleX(-1);
+    background-image: url('data:image/png;base64,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');
+}
+
+#forward:hover {
+    transform: scaleX(-1) scale(1.15);
+}
+
+#back {
+    background-image: url('data:image/png;base64,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');
+    filter: invert();
+    left: 47%;
+}
+
+.progress {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 80px;
+    z-index: 10;
+    opacity: .75;
+}
+
+.sign {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 75vw;
+    height: 75vh;
+
+    max-width: 1500px;
+    max-height: 600px;
+
+    background: #252525;
+    border-radius: 12px solid #333;
+    padding: 2rem;
+    
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+
+    overflow: hidden;
+    z-index: 2;
+}
+
+.stand {
+    position: fixed;
+
+    max-width: 60px;
+    max-height: 50vh;
+
+    background: #4b4b4b;
+
+    height: 75vh;
+    width: 5vw;
+
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 500px) {
+    .card {
+        width: 90vw;
+        height: 80vh;
+    }
+    .graffiti {font-size: 3rem;}
+    .graffiti:nth-child(2) {font-size: 1.8rem;}
+}
